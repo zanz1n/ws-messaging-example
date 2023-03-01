@@ -1,0 +1,25 @@
+{
+  "name": "ws-messaging-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "author": "Izan Rodrigues <izanrodrigues999@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "shared/"
+  ],
+  "scripts": {
+    "dev:api": "yarn workspace api start:dev",
+    "build:api": "yarn workspace api build",
+    "dev:client": "yarn workspace client dev",
+    "build:client": "yarn workspace client build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "typescript": "^4.9.5"
+  }
+}
