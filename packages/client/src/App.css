@@ -1,42 +1,54 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.chat-box {
+    max-width: 720px;
+    height: 75%;
+    background-color: var(--current-line);
+    color: white;
+    width: 85%;
+    border-radius: 12px;
+    padding: 16px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-box .messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.messages .message {
+    width: 60%;
+    min-width: 300px;
+    padding: 12px;
+    border-radius: 8px;
 }
 
-.card {
-  padding: 2em;
+.message .author {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--foreground);
 }
 
-.read-the-docs {
-  color: #888;
+.message .content {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.messages .other-user {
+    background-color: var(--pink);
+    align-self: flex-start;
+}
+
+.messages .self-user {
+    background-color: var(--purple);
+    align-self: flex-end;
 }
