@@ -4,7 +4,9 @@
   --foreground: #f8f8f2;
   --comment: #6272a4;
   --cyan: #8be9fd;
+  --cyan-hover: #6cb9ca;
   --green: #50fa7b;
+  --green-hover: #46da6b;
   --orange: #ffb86c;
   --pink: #ff79c6;
   --purple: #bd93f9;
@@ -21,4 +23,19 @@ body {
   margin: 0;
   border: 0;
   text-decoration: none;
+}
+
+a {
+  color: var(--cyan);
+}
+
+a:hover {
+  color: var(--cyan-hover);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--foreground);
 }
