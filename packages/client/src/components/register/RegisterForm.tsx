@@ -7,10 +7,8 @@ export default function RegisterForm() {
     const [error, setError] = useState<string | null>(null);
 
     return(
-        <div className="login-container">
-            <form onSubmit={(e) => {
-                console.log(e);
-            }}>
+        <main>
+            <form className="register" onSubmit={(e) => { e.preventDefault(); }}>
                 {(() => {
                     if (error) {
                         return (
@@ -20,41 +18,52 @@ export default function RegisterForm() {
                         );
                     }
                 })()}
-                <label htmlFor="username">Username</label>
-                <div className="form-input">
-                    <input type="text" name="username" id="username" />
+
+                <div className="input-label">
+                    <label htmlFor="username">Username</label>
+                    <div className="form-input">
+                        <input type="text" name="username" id="username" />
+                    </div>
                 </div>
 
-                <label htmlFor="password">Password</label>
-                <div className="form-input">
-                    <input onChange={(e) => {
-                        if (password2 != "" && password2 != e.target.value) {
-                            setError("The passwords do not match.");
-                        } else {
-                            setError(null);
-                        }
-                        setPassword1(e.target.value);
-                    }} type="password" name="password" id="password" />
+
+                <div className="input-label">
+                    <label htmlFor="password">Password</label>
+
+                    <div className="form-input">
+                        <input onChange={(e) => {
+                            if (password2 != "" && password2 != e.target.value) {
+                                setError("The passwords do not match.");
+                            } else {
+                                setError(null);
+                            }
+                            setPassword1(e.target.value);
+                        }} type="password" name="password" id="password" />
+                    </div>
                 </div>
 
-                <label htmlFor="password">Confirm Password</label>
+                <div className="input-label">
+                    <label htmlFor="password">Confirm Password</label>
 
-                <div className="form-input">
-                    <input onChange={(e) => {
-                        if (password1 != "" && password1 != e.target.value) {
-                            setError("The passwords do not match.");
-                        } else {
-                            setError(null);
-                        }
-                        setPassword2(e.target.value);
-                    }} type="password" name="confirmPassword" id="confirmPassword" />
+                    <div className="form-input">
+                        <input onChange={(e) => {
+                            if (password1 != "" && password1 != e.target.value) {
+                                setError("The passwords do not match.");
+                            } else {
+                                setError(null);
+                            }
+                            setPassword2(e.target.value);
+                        }} type="password" name="confirmPassword" id="confirmPassword" />
+                    </div>
                 </div>
 
                 <button type="submit">Registrar</button>
-                <p>Already have an account?
-                    <Link to="/login"><a> Login</a></Link>
-                </p>
+
+                <div className="switch-pages">
+                    <p>Already have an account?<> </><Link to="/login">Login</Link></p>
+                </div>
+
             </form>
-        </div>
+        </main>
     );
 }
