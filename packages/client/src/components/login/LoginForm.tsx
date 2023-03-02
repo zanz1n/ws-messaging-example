@@ -62,7 +62,7 @@ export default function LoginForm() {
                     </div>
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit">Log In</button>
 
                 <div className="switch-pages">
                     <p>New here?<> </><Link to="/register">Create an account</Link></p>

@@ -51,7 +51,7 @@ export default function RegisterForm() {
                     </div>
                 </div>
 
-                <button type="submit">Registrar</button>
+                <button type="submit">Create Account</button>
 
                 <div className="switch-pages">
                     <p>Already have an account?<> </><Link to="/login">Login</Link></p>
