@@ -1,0 +1,44 @@
+.chat-box {
+    max-width: 720px;
+    height: 75%;
+    background-color: var(--current-line);
+    color: white;
+    width: 85%;
+    border-radius: 12px;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.chat-box .messages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.messages .message {
+    max-width: 67%;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.message .author {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.message .content {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.messages .other-user {
+    background-color: var(--pink);
+    align-self: flex-start;
+}
+
+.messages .self-user {
+    background-color: var(--purple);
+    align-self: flex-end;
+}
