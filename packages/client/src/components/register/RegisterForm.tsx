@@ -57,6 +57,7 @@ export default function RegisterForm() {
                     <p>Already have an account?<> </><Link to="/login">Login</Link></p>
                 </div>
 
+                <div className="top-error invisible"><p>-</p></div>
             </form>
         </main>
     );

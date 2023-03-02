@@ -68,6 +68,7 @@ export default function LoginForm() {
                     <p>New here?<> </><Link to="/register">Create an account</Link></p>
                 </div>
 
+                <div className="top-error invisible"><p>-</p></div>
             </form>
         </main>
     );
