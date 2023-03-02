@@ -16,17 +16,17 @@
     width: 85%;
     border-radius: 12px;
     padding: 16px;
+    overflow-y: auto;
 }
 
 .chat-box .messages {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .messages .message {
-    width: 60%;
-    min-width: 300px;
+    max-width: 67%;
     padding: 12px;
     border-radius: 8px;
 }
@@ -52,3 +52,5 @@
     background-color: var(--purple);
     align-self: flex-end;
 }
+
+
