@@ -4,6 +4,7 @@
     "newLine": "lf",
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
+    "moduleResolution": "node",
     "sourceMap": true,
     "incremental": true,
     "skipLibCheck": true,
