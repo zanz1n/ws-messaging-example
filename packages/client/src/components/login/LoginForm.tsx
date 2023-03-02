@@ -8,7 +8,6 @@ export interface LoginFormProps {
 
 export default function LoginForm() {
     const [error, setError] = useState<string | null>(null);
-    const [submitDisabled, setSubmitDisabled] = useState<boolean>(true);
     const { login } = useAuth();
 
     return (
@@ -45,15 +44,9 @@ export default function LoginForm() {
                         }
                     })(e.target);
                 }}>
-                {(() => {
-                    if (error) {
-                        return (
-                            <div className="form-top-error">
-                                <p>{error}</p>
-                            </div>
-                        );
-                    }
-                })()}
+                <div className={`top-error${error ? "" : " invisible"}`}>
+                    <p>{error ?? "-"}</p>
+                </div>
 
                 <div className="input-label">
                     <label htmlFor="username">Username</label>

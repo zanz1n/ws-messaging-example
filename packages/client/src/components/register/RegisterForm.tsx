@@ -9,20 +9,14 @@ export default function RegisterForm() {
     return(
         <main>
             <form className="register" onSubmit={(e) => { e.preventDefault(); }}>
-                {(() => {
-                    if (error) {
-                        return (
-                            <div className="form-top-error">
-                                <p>{error}</p>
-                            </div>
-                        );
-                    }
-                })()}
+                <div className={`top-error${error ? "" : " invisible"}`}>
+                    <p>{error ?? "-"}</p>
+                </div>
 
                 <div className="input-label">
                     <label htmlFor="username">Username</label>
                     <div className="form-input">
-                        <input type="text" name="username" id="username" />
+                        <input required type="text" name="username" id="username" />
                     </div>
                 </div>
 
@@ -31,7 +25,7 @@ export default function RegisterForm() {
                     <label htmlFor="password">Password</label>
 
                     <div className="form-input">
-                        <input onChange={(e) => {
+                        <input required onChange={(e) => {
                             if (password2 != "" && password2 != e.target.value) {
                                 setError("The passwords do not match.");
                             } else {
@@ -46,7 +40,7 @@ export default function RegisterForm() {
                     <label htmlFor="password">Confirm Password</label>
 
                     <div className="form-input">
-                        <input onChange={(e) => {
+                        <input required onChange={(e) => {
                             if (password1 != "" && password1 != e.target.value) {
                                 setError("The passwords do not match.");
                             } else {

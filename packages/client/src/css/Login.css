@@ -16,6 +16,10 @@ form {
     justify-content: center;
 }
 
+.top-error {
+    color: var(--red);
+}
+
 .input-label {
     width: 100%;
     display: flex;
@@ -41,10 +45,15 @@ form label {
 
 .form-input input {
     width: 100%;
+    height: 100%;
     border: none;
     background-color: transparent;
     color: var(--foreground);
     outline: none;
+}
+
+.invisible {
+    color: var(--current-line);
 }
 
 form button {
@@ -64,14 +73,15 @@ form button:hover {
 
     form button,
     .form-input,
-    .switch-pages {
+    .switch-pages,
+    .top-error {
         margin-top: 12px;
         margin-bottom: 12px;
     }
 
     .register {
         width: 450px;
-        height: 420px;
+        height: 430px;
     }
 
     .login {
