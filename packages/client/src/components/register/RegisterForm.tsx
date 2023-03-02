@@ -21,28 +21,38 @@ export default function RegisterForm() {
                     }
                 })()}
                 <label htmlFor="username">Username</label>
-                <input type="text" name="username" id="username" />
+                <div className="form-input">
+                    <input type="text" name="username" id="username" />
+                </div>
+
                 <label htmlFor="password">Password</label>
-                <input onChange={(e) => {
-                    if (password2 != "" && password2 != e.target.value) {
-                        setError("The passwords do not match.");
-                    } else {
-                        setError(null);
-                    }
-                    setPassword1(e.target.value);
-                }} type="password" name="password" id="password" />
+                <div className="form-input">
+                    <input onChange={(e) => {
+                        if (password2 != "" && password2 != e.target.value) {
+                            setError("The passwords do not match.");
+                        } else {
+                            setError(null);
+                        }
+                        setPassword1(e.target.value);
+                    }} type="password" name="password" id="password" />
+                </div>
+
                 <label htmlFor="password">Confirm Password</label>
-                <input onChange={(e) => {
-                    if (password1 != "" && password1 != e.target.value) {
-                        setError("The passwords do not match.");
-                    } else {
-                        setError(null);
-                    }
-                    setPassword2(e.target.value);
-                }} type="password" name="confirmPassword" id="confirmPassword" />
+
+                <div className="form-input">
+                    <input onChange={(e) => {
+                        if (password1 != "" && password1 != e.target.value) {
+                            setError("The passwords do not match.");
+                        } else {
+                            setError(null);
+                        }
+                        setPassword2(e.target.value);
+                    }} type="password" name="confirmPassword" id="confirmPassword" />
+                </div>
+
                 <button type="submit">Registrar</button>
                 <p>Already have an account?
-                    <Link to="/login"><a>Login</a></Link>
+                    <Link to="/login"><a> Login</a></Link>
                 </p>
             </form>
         </div>
