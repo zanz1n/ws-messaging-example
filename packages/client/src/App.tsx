@@ -1,9 +1,10 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import ChatBox from "./components/chat/ChatBox";
-
 
 export default function App() {
     return (
-        <ChatBox />
+        <div className="App">
+            <Outlet/>
+        </div>
     );
 }
