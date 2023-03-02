@@ -19,15 +19,12 @@ export default function ChatBox() {
     }, []);
 
     return (
-        <div className="App">
-            <div className="chat-box">
-                <div className="messages">
-                    {messages.map((message) => {
-                        const messageProps = { message, selfUser };
-                        console.log(messageProps);
-                        return (<Message { ...messageProps } />);
-                    })}
-                </div>
+        <div className="chat-box">
+            <div className="messages">
+                {messages.map((message) => {
+                    const messageProps = { message, selfUser };
+                    return (<Message { ...messageProps } />);
+                })}
             </div>
         </div>
     );
