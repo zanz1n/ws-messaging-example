@@ -4,6 +4,7 @@ import "./App.css";
 export default function App() {
     return (
         <div className="App">
+            <div className="App-gb-img"></div>
             <Outlet/>
         </div>
     );
