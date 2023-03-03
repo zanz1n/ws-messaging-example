@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, UnauthorizedException, UseGuards } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { Request } from "express";
 import { AuthService } from "./auth.service";
@@ -18,6 +18,9 @@ export class AuthController {
 
     @Post("/register")
     async register(@Body() body: RegisterUserDto) {
+        if (body.password !== body.confirmPassword) {
+            throw new UnauthorizedException("Passwords do not match");
+        }
         return this.authService.register(body.username, body.password);
     }
 

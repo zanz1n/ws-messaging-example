@@ -10,4 +10,9 @@ export abstract class RegisterUserDto {
     @IsString()
     @MinLength(8)
         password: string;
+
+    @IsNotEmpty()
+    @IsString()
+    @MinLength(8)
+        confirmPassword: string;
 }
