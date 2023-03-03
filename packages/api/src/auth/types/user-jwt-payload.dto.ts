@@ -1,4 +1,5 @@
 import { User } from "@prisma/client";
+import { Request } from "express";
 
 export abstract class UserJwtPayloadDto {
     id: string;
