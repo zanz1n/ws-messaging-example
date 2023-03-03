@@ -21,7 +21,7 @@ model User {
 
   messages Message[]
 
-  @@index([id])
+  @@index([id, username])
   @@map("users")
 }
 
