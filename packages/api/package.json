@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Nest API",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

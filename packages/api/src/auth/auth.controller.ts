@@ -1,10 +1,10 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { Request } from "express";
-import { AuthService } from "./auth.service.js";
-import { JwtAuthGuard } from "./strategies/guards/jwt-auth.guard.js";
-import { LocalAuthGuard } from "./strategies/guards/local-auth.guard.js";
-import { RegisterUserDto } from "./types/register-user-payload.dto.js";
+import { AuthService } from "./auth.service";
+import { JwtAuthGuard } from "./strategies/guards/jwt-auth.guard";
+import { LocalAuthGuard } from "./strategies/guards/local-auth.guard";
+import { RegisterUserDto } from "./types/register-user-payload.dto";
 
 @Controller("/auth")
 export class AuthController {
