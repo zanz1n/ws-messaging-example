@@ -1,10 +1,10 @@
 import { Body, Controller, Get, Post, Req, UnauthorizedException, UseGuards } from "@nestjs/common";
-import { User } from "@prisma/client";
 import { Request } from "express";
 import { AuthService } from "./auth.service";
 import { JwtAuthGuard } from "./strategies/guards/jwt-auth.guard";
 import { LocalAuthGuard } from "./strategies/guards/local-auth.guard";
 import { RegisterUserDto } from "./types/register-user-payload.dto";
+import { JwtGuardedRequest, LocalGuardedRequest } from "./types/user-jwt-payload.dto";
 
 @Controller("/auth")
 export class AuthController {
@@ -12,8 +12,8 @@ export class AuthController {
 
     @Post("/login")
     @UseGuards(LocalAuthGuard)
-    async login(@Req() req: Request) {
-        return this.authService.login(req.user as User);
+    async login(@Req() req: LocalGuardedRequest<Request>) {
+        return this.authService.login(req.user);
     }
 
     @Post("/register")
@@ -26,7 +26,7 @@ export class AuthController {
 
     @Get("/@me")
     @UseGuards(JwtAuthGuard)
-    getProfile(@Req() req: Request) {
+    getProfile(@Req() req: JwtGuardedRequest<Request>) {
         return req.user;
     }
 }
