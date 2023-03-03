@@ -98,7 +98,7 @@ form button:hover {
 @media screen and (max-width: 768px) {
     main {
         width: 85%;
-        height: 50%;
+        height: 60%;
     }
 
     form {
