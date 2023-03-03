@@ -2,8 +2,8 @@ import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "@prisma/client";
 import { compare, genSalt, hash } from "bcryptjs";
-import { GlobalConfig } from "src/GlobalConfig";
-import { PrismaService } from "src/prisma/prisma.service";
+import { GlobalConfig } from "@/GlobalConfig";
+import { PrismaService } from "@/prisma/prisma.service";
 import { v4 as uuid } from "uuid";
 
 @Injectable()
