@@ -1,3 +1,4 @@
-export class GlobalConfig {
-    static readonly DbUrl = process.env.DATABASE_URL;
-}
+export const GlobalConfig = {
+    DbUrl: process.env.DATABASE_URL,
+    JwtSecret: process.env.JWT_SECRET,
+};
