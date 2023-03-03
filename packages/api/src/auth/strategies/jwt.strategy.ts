@@ -1,7 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import { BadGatewayException, Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
 import { GlobalConfig } from "@/GlobalConfig";
+import { UserJwtPayloadDto } from "../types/user-jwt-payload.dto";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -13,7 +14,17 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         });
     }
 
-    async validate(payload: any) {
-        return { id: payload.sub, username: payload.username };
+    async validate(payload: unknown): Promise<UserJwtPayloadDto> {
+        if (
+            payload
+            && typeof payload == "object"
+            && "sub" in payload
+            && typeof payload["sub"] == "string"
+            && "username" in payload
+            && typeof payload["username"] == "string"
+        ) {
+            return { id: payload.sub, username: payload.username };
+        }
+        throw new BadGatewayException("Invalid JWT payload");
     }
 }
