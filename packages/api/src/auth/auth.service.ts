@@ -5,6 +5,7 @@ import { compare, genSalt, hash } from "bcryptjs";
 import { GlobalConfig } from "@/GlobalConfig";
 import { PrismaService } from "@/prisma/prisma.service";
 import { v4 as uuid } from "uuid";
+import { UserJwtPayloadDto } from "./types/user-jwt-payload.dto";
 
 @Injectable()
 export class AuthService {
@@ -54,5 +55,16 @@ export class AuthService {
         return {
             access_token: this.jwtService.sign(payload)
         };
+    }
+
+    async validateJwt(payload: string): Promise<UserJwtPayloadDto | null> {
+        try {
+            this.jwtService.verify(payload, {
+                secret: GlobalConfig.JwtSecret
+            });
+        } catch(_) {
+            return null;
+        }
+        return this.jwtService.decode(payload) as UserJwtPayloadDto;
     }
 }
