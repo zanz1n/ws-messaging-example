@@ -57,14 +57,17 @@ export class AuthService {
         };
     }
 
-    async validateJwt(payload: string): Promise<UserJwtPayloadDto | null> {
+    async validateJwt(payload: string) {
         try {
             this.jwtService.verify(payload, {
                 secret: GlobalConfig.JwtSecret
             });
         } catch(_) {
-            return null;
+            throw new UnauthorizedException("Invalid auth token");
         }
-        return this.jwtService.decode(payload) as UserJwtPayloadDto;
+        const decodedToken = this.jwtService.decode(payload) as UserJwtPayloadDto;
+        if (decodedToken["iat"]) delete decodedToken["iat"];
+        if (decodedToken["exp"]) delete decodedToken["exp"];
+        return decodedToken;
     }
 }
