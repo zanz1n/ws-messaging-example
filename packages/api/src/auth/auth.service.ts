@@ -46,7 +46,7 @@ export class AuthService {
             }
         });
 
-        return newUser;
+        return this.login(newUser);
     }
 
     async login(user: User) {
