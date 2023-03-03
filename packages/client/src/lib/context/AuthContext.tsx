@@ -16,7 +16,7 @@ export interface LoginProps {
 //@ts-ignore
 const Context = createContext<AuthContext>({});
 
-function AuthProvider({ children }: { children: React.ReactNode }) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
     const token = localStorage.getItem("token");
 
     const navigate = useNavigate();
