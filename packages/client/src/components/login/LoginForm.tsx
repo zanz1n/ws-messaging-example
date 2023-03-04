@@ -6,6 +6,26 @@ import InputLabel from "../auth/InputLabel";
 import SubmitButton from "../auth/SubmitButton";
 import SwitchPages from "../auth/SwitchPages";
 
+function validate(target: unknown) {
+    if (target &&
+        typeof target == "object" &&
+        "username" in target &&
+        target["username"] &&
+        typeof target["username"] == "object" &&
+        "value" in target["username"] &&
+        target["username"]["value"] &&
+        typeof target["username"]["value"] == "string" &&
+        "password" in target &&
+        target["password"] &&
+        typeof target["password"] == "object" &&
+        "value" in target["password"] &&
+        target["password"]["value"] &&
+        typeof target["password"]["value"] == "string") {
+        return true;
+    }
+    return false;
+}
+
 export default function LoginForm() {
     const [error, setError] = useState<string | null>(null);
 
@@ -17,23 +37,8 @@ export default function LoginForm() {
         <main>
             <Form type="login" error={error} onSubmit={(e) => {
                 e.preventDefault();
-                (async(target: unknown) => {
-                    if (
-                        target &&
-                        typeof target == "object" &&
-                        "username" in target &&
-                        target["username"] &&
-                        typeof target["username"] == "object" &&
-                        "value" in target["username"] &&
-                        target["username"]["value"] &&
-                        typeof target["username"]["value"] == "string" &&
-                        "password" in target &&
-                        target["password"] &&
-                        typeof target["password"] == "object" &&
-                        "value" in target["password"] &&
-                        target["password"]["value"] &&
-                        typeof target["password"]["value"] == "string"
-                    ) {
+                (async(target: any) => {
+                    if (validate(target)) {
                         const loginResult = await login({ username: target.username.value, password: target.password.value });
                         if (loginResult) {
                             setError(null);
