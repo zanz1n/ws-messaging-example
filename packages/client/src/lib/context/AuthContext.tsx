@@ -7,6 +7,7 @@ export interface AuthContext {
     login: (props: LoginProps) => Promise<boolean>;
     logout: () => Promise<void>;
     register: (props: RegisterProps) => Promise<boolean>;
+    ping: () => Promise<void>;
 }
 
 export interface LoginProps {
@@ -25,9 +26,24 @@ export interface RegisterProps {
 const Context = createContext<AuthContext>({});
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+    const navigate = useNavigate();
+
     const token = localStorage.getItem("token");
 
-    const navigate = useNavigate();
+    async function ping() {
+        return fetch(ClientConfig.ApiUri + "/auth/@me", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        }).then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            throw new Error("Failed to ping");
+        }).catch((_) => {});
+    }
 
     async function register({ username, password, confirmPassword }: RegisterProps) {
         return fetch(ClientConfig.ApiUri + "/auth/register", {
@@ -86,8 +102,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         token,
         login,
         logout,
-        register
-    }), [token]);    
+        register,
+        ping
+    }), [token]);
 
     return (
         <Context.Provider value={value}>
