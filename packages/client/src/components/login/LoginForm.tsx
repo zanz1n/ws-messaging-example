@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../lib/context/AuthContext";
 import Form from "../auth/Form";
 import InputLabel from "../auth/InputLabel";
@@ -8,6 +8,9 @@ import SwitchPages from "../auth/SwitchPages";
 
 export default function LoginForm() {
     const [error, setError] = useState<string | null>(null);
+
+    const navigate = useNavigate();
+
     const { login } = useAuth();
 
     return (
@@ -17,14 +20,14 @@ export default function LoginForm() {
                 (async(target: unknown) => {
                     if (
                         target &&
-                typeof target == "object" &&
-                "username" in target &&
-                target["username"] &&
-                typeof target["username"] == "object" &&
-                "value" in target["username"] &&
-                target["username"]["value"] &&
-                typeof target["username"]["value"] == "string" &&
-                "password" in target &&
+                        typeof target == "object" &&
+                        "username" in target &&
+                        target["username"] &&
+                        typeof target["username"] == "object" &&
+                        "value" in target["username"] &&
+                        target["username"]["value"] &&
+                        typeof target["username"]["value"] == "string" &&
+                        "password" in target &&
                         target["password"] &&
                         typeof target["password"] == "object" &&
                         "value" in target["password"] &&
@@ -34,7 +37,7 @@ export default function LoginForm() {
                         const loginResult = await login({ username: target.username.value, password: target.password.value });
                         if (loginResult) {
                             setError(null);
-                            <Navigate to="/"/>;
+                            navigate("/");
                             return;
                         }
                         setError("The username or password is invalid.");
