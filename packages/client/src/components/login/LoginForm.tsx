@@ -26,8 +26,19 @@ function validate(target: unknown) {
     return false;
 }
 
+function handleValueUpdate(e: React.ChangeEvent<HTMLInputElement>, setSendable: React.Dispatch<React.SetStateAction<boolean>>) {
+    const username = document.getElementById("username") as HTMLInputElement;
+    const password = document.getElementById("password") as HTMLInputElement;
+    if (!username.value || username.value == "" || !password.value || password.value == "") {
+        setSendable(false);
+        return;
+    }
+}
+
 export default function LoginForm() {
     const [error, setError] = useState<string | null>(null);
+
+    const [sendable, setSendable] = useState<boolean>(false);
 
     const navigate = useNavigate();
 
@@ -51,15 +62,15 @@ export default function LoginForm() {
                     }
                 })(e.target);
             }}>
-                <InputLabel required identifier="username" type="text">
+                <InputLabel onChange={(e) => handleValueUpdate(e, setSendable)} required identifier="username" type="text">
                     Username
                 </InputLabel>
 
-                <InputLabel required identifier="password" type="password">
+                <InputLabel onChange={(e) => handleValueUpdate(e, setSendable)} required identifier="password" type="password">
                     Password
                 </InputLabel>
 
-                <SubmitButton>Log In</SubmitButton>
+                <SubmitButton enabled={sendable} >Log In</SubmitButton>
                 <SwitchPages plain="New here?" to="/register">Create an account</SwitchPages>
             </Form>
         </main>
