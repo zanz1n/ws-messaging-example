@@ -84,7 +84,6 @@ form button:disabled {
 }
 
 @media screen and (min-width: 768px) {
-
     form button,
     .form-input,
     .switch-pages,
@@ -108,6 +107,7 @@ form button:disabled {
     main {
         width: 85%;
         height: 60%;
+        min-height: 500px;
     }
 
     form {
