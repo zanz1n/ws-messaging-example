@@ -33,6 +33,7 @@ function handleValueUpdate(e: React.ChangeEvent<HTMLInputElement>, setSendable: 
         setSendable(false);
         return;
     }
+    else setSendable(true);
 }
 
 export default function LoginForm() {
