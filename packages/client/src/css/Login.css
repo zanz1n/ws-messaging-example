@@ -1,3 +1,7 @@
+:root {
+    --gren-disabled: #8cc78e;
+}
+
 main {
     padding-left: 8px;
     padding-right: 8px;
@@ -72,6 +76,11 @@ form button {
 form button:hover {
     cursor: pointer;
     background: var(--green-hover);
+}
+
+form button:disabled {
+    background: var(--gren-disabled);
+    cursor: not-allowed;
 }
 
 @media screen and (min-width: 768px) {
