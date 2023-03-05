@@ -1,5 +1,9 @@
-export default function SubmitButton({ children }: React.PropsWithChildren) {
+export interface SubmitButtonProps extends React.PropsWithChildren {
+    enabled?: boolean;
+}
+
+export default function SubmitButton({ children, enabled }: SubmitButtonProps) {
     return (
-        <button type="submit">{children}</button>
+        <button disabled={!(enabled ?? true)} type="submit" >{children}</button>
     );
 }
